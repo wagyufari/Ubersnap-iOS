@@ -40,7 +40,7 @@ struct BottomSheetView<Content: View>: View {
                 content
             }
             .frame(width: geometry.size.width, height: self.maxHeight, alignment: .top)
-            .background(Color.white)
+            .background(Color.backgroundPrimary)
             .cornerRadius(Constants.radius)
             .frame(height: geometry.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
@@ -76,7 +76,7 @@ struct BottomSheetWrapModifier:ViewModifier{
     func body(content: Content) -> some View {
         GeometryReader { geometry in
             ZStack{
-                Rectangle().foregroundColor(.black).opacity(isShown ? 0.4 : 0).onTapGesture {
+                Rectangle().foregroundColor(Color.backgroundPrimary).opacity(isShown ? 0.4 : 0).onTapGesture {
                     isShown.toggle()
                 }
                 BottomSheetView(
@@ -88,9 +88,7 @@ struct BottomSheetWrapModifier:ViewModifier{
                         content
                             .onAppear{
                                 if bottomSafeArea == nil {
-                                    if let window = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first {
-                                        bottomSafeArea = window.safeAreaInsets.bottom
-                                    }
+                                    bottomSafeArea = SafeArea.safeAreaInsets?.bottom
                                 }
                             }
                         Spacer()
@@ -98,7 +96,7 @@ struct BottomSheetWrapModifier:ViewModifier{
                     }.background(ViewGeometry()).onPreferenceChange(ViewHeightKey.self){
                         frame = $0 > geometry.size.height * 0.9 ? geometry.size.height * 0.9 : $0
                     }
-                }.foregroundColor(.white)
+                }.foregroundColor(Color.backgroundPrimary)
             }
         }.edgesIgnoringSafeArea(.all)
     }
@@ -121,7 +119,7 @@ struct BottomSheetModifier:ViewModifier{
                     onDismiss: onDismiss
                 ) {
                     content
-                }.foregroundColor(.white)
+                }.foregroundColor(.backgroundPrimary)
             }
         }.edgesIgnoringSafeArea(.all)
     }

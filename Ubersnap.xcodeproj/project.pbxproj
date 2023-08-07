@@ -19,6 +19,16 @@
 		3F82D0BF2A8128D4006AF43D /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0BD2A8128D4006AF43D /* Sheet.swift */; };
 		3F82D0C12A8128F9006AF43D /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0C02A8128F9006AF43D /* NSNotification+Extension.swift */; };
 		3F82D0C32A812A02006AF43D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0C22A812A02006AF43D /* Color+Extension.swift */; };
+		3F82D0C62A812C5F006AF43D /* TaskComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0C52A812C5F006AF43D /* TaskComposer.swift */; };
+		3F82D0CA2A812C7B006AF43D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0C72A812C7B006AF43D /* Date+Extension.swift */; };
+		3F82D0CB2A812C7B006AF43D /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0C82A812C7B006AF43D /* Text+Extension.swift */; };
+		3F82D0CC2A812C7B006AF43D /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0C92A812C7B006AF43D /* Collection+Extension.swift */; };
+		3F82D0D02A812C8D006AF43D /* DateGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0CE2A812C8D006AF43D /* DateGrid.swift */; };
+		3F82D0D12A812C8D006AF43D /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0CF2A812C8D006AF43D /* DatePicker.swift */; };
+		3F82D0D42A812CF4006AF43D /* GetCalendarByMonthAndYearUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0D32A812CF4006AF43D /* GetCalendarByMonthAndYearUseCase.swift */; };
+		3F82D0D72A812E3E006AF43D /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F82D0D62A812E3E006AF43D /* ReactiveSwift */; };
+		3F82D0D92A812E53006AF43D /* Keyboard+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0D82A812E53006AF43D /* Keyboard+Utils.swift */; };
+		3F82D0DB2A812E8E006AF43D /* SafeArea+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0DA2A812E8E006AF43D /* SafeArea+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +46,15 @@
 		3F82D0BD2A8128D4006AF43D /* Sheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
 		3F82D0C02A8128F9006AF43D /* NSNotification+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extension.swift"; sourceTree = "<group>"; };
 		3F82D0C22A812A02006AF43D /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		3F82D0C52A812C5F006AF43D /* TaskComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskComposer.swift; sourceTree = "<group>"; };
+		3F82D0C72A812C7B006AF43D /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		3F82D0C82A812C7B006AF43D /* Text+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
+		3F82D0C92A812C7B006AF43D /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		3F82D0CE2A812C8D006AF43D /* DateGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateGrid.swift; sourceTree = "<group>"; };
+		3F82D0CF2A812C8D006AF43D /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		3F82D0D32A812CF4006AF43D /* GetCalendarByMonthAndYearUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCalendarByMonthAndYearUseCase.swift; sourceTree = "<group>"; };
+		3F82D0D82A812E53006AF43D /* Keyboard+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Utils.swift"; sourceTree = "<group>"; };
+		3F82D0DA2A812E8E006AF43D /* SafeArea+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SafeArea+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F82D0D72A812E3E006AF43D /* ReactiveSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,9 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				3F82D0B72A8127EE006AF43D /* Utils */,
-				3F82D0B62A8127D8006AF43D /* Presentation */,
-				3F82D0B52A8127D5006AF43D /* Domain */,
 				3F82D0B32A8127C6006AF43D /* Data */,
+				3F82D0B52A8127D5006AF43D /* Domain */,
+				3F82D0B62A8127D8006AF43D /* Presentation */,
 				3F82D09C2A812712006AF43D /* AppDelegate.swift */,
 				3F82D09E2A812712006AF43D /* SceneDelegate.swift */,
 				3F82D0A82A812715006AF43D /* Assets.xcassets */,
@@ -93,6 +113,7 @@
 		3F82D0B52A8127D5006AF43D /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				3F82D0D22A812CF4006AF43D /* UseCase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -100,6 +121,8 @@
 		3F82D0B62A8127D8006AF43D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				3F82D0CD2A812C8D006AF43D /* DatePicker */,
+				3F82D0C42A812C5F006AF43D /* Composer */,
 				3F82D0A02A812712006AF43D /* MainViewController.swift */,
 			);
 			path = Presentation;
@@ -108,13 +131,43 @@
 		3F82D0B72A8127EE006AF43D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3F82D0DA2A812E8E006AF43D /* SafeArea+Utils.swift */,
+				3F82D0C92A812C7B006AF43D /* Collection+Extension.swift */,
+				3F82D0C72A812C7B006AF43D /* Date+Extension.swift */,
+				3F82D0C82A812C7B006AF43D /* Text+Extension.swift */,
 				3F82D0C22A812A02006AF43D /* Color+Extension.swift */,
 				3F82D0BC2A8128D4006AF43D /* BottomSheetView.swift */,
 				3F82D0C02A8128F9006AF43D /* NSNotification+Extension.swift */,
 				3F82D0BD2A8128D4006AF43D /* Sheet.swift */,
 				3F82D0B82A812802006AF43D /* UIViewController+Extension.swift */,
+				3F82D0D82A812E53006AF43D /* Keyboard+Utils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		3F82D0C42A812C5F006AF43D /* Composer */ = {
+			isa = PBXGroup;
+			children = (
+				3F82D0C52A812C5F006AF43D /* TaskComposer.swift */,
+			);
+			path = Composer;
+			sourceTree = "<group>";
+		};
+		3F82D0CD2A812C8D006AF43D /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				3F82D0CE2A812C8D006AF43D /* DateGrid.swift */,
+				3F82D0CF2A812C8D006AF43D /* DatePicker.swift */,
+			);
+			path = DatePicker;
+			sourceTree = "<group>";
+		};
+		3F82D0D22A812CF4006AF43D /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				3F82D0D32A812CF4006AF43D /* GetCalendarByMonthAndYearUseCase.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +186,9 @@
 			dependencies = (
 			);
 			name = Ubersnap;
+			packageProductDependencies = (
+				3F82D0D62A812E3E006AF43D /* ReactiveSwift */,
+			);
 			productName = Ubersnap;
 			productReference = 3F82D0992A812712006AF43D /* Ubersnap.app */;
 			productType = "com.apple.product-type.application";
@@ -161,6 +217,9 @@
 				Base,
 			);
 			mainGroup = 3F82D0902A812712006AF43D;
+			packageReferences = (
+				3F82D0D52A812E3E006AF43D /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
+			);
 			productRefGroup = 3F82D09A2A812712006AF43D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -189,14 +248,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F82D0A12A812712006AF43D /* MainViewController.swift in Sources */,
+				3F82D0CA2A812C7B006AF43D /* Date+Extension.swift in Sources */,
 				3F82D0C32A812A02006AF43D /* Color+Extension.swift in Sources */,
 				3F82D0C12A8128F9006AF43D /* NSNotification+Extension.swift in Sources */,
+				3F82D0CB2A812C7B006AF43D /* Text+Extension.swift in Sources */,
 				3F82D0A72A812712006AF43D /* Ubersnap.xcdatamodeld in Sources */,
 				3F82D09D2A812712006AF43D /* AppDelegate.swift in Sources */,
 				3F82D0B92A812802006AF43D /* UIViewController+Extension.swift in Sources */,
+				3F82D0CC2A812C7B006AF43D /* Collection+Extension.swift in Sources */,
+				3F82D0D42A812CF4006AF43D /* GetCalendarByMonthAndYearUseCase.swift in Sources */,
 				3F82D09F2A812712006AF43D /* SceneDelegate.swift in Sources */,
 				3F82D0BE2A8128D4006AF43D /* BottomSheetView.swift in Sources */,
+				3F82D0C62A812C5F006AF43D /* TaskComposer.swift in Sources */,
+				3F82D0D92A812E53006AF43D /* Keyboard+Utils.swift in Sources */,
 				3F82D0BF2A8128D4006AF43D /* Sheet.swift in Sources */,
+				3F82D0D02A812C8D006AF43D /* DateGrid.swift in Sources */,
+				3F82D0D12A812C8D006AF43D /* DatePicker.swift in Sources */,
+				3F82D0DB2A812E8E006AF43D /* SafeArea+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +474,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3F82D0D52A812E3E006AF43D /* XCRemoteSwiftPackageReference "ReactiveSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveCocoa/ReactiveSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3F82D0D62A812E3E006AF43D /* ReactiveSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F82D0D52A812E3E006AF43D /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
+			productName = ReactiveSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3F82D0A52A812712006AF43D /* Ubersnap.xcdatamodeld */ = {

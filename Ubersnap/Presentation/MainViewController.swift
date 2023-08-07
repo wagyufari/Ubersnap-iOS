@@ -13,15 +13,23 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         useSwiftUI {
-            ContentView()
+            ContentView(viewContext: self)
         }
     }
 }
 
 private struct ContentView: View{
+    
+    let viewContext: UIViewController
+    
     var body: some View {
         ZStack{
             Text("ASD")
+        }
+        .onTapGesture {
+            Sheet.showGestured(parentController: viewContext) {
+                TaskComposer(viewContext: viewContext)
+            }
         }
         .background(Color.backgroundPrimary)
     }

@@ -36,14 +36,10 @@ extension Notification{
         }
     }
     
-    static func getSheetObserver(handler: @escaping () -> Void) -> NSObjectProtocol {
-        return getObserver(name: .SHEET_HIDE){ obj in
+    static func getSheetObserver(id: Any, handler: @escaping () -> Void) -> NSObjectProtocol {
+        return getObserver(name: (NotificationKey.Sheet.Hide + "\(id)").toNSNotificationName()){ obj in
             handler()
         }
-    }
-    
-    static func hideSheet(){
-        Notification.send(.SHEET_HIDE)
     }
     
     static func onResume(_ callback: @escaping () -> Void) -> NSObjectProtocol {
@@ -54,8 +50,8 @@ extension Notification{
 }
 
 extension Sheet {
-    static func dismiss(){
-        Notification.send(.SHEET_HIDE)
+    static func dismiss(id: Any){
+        Notification.send((NotificationKey.Sheet.Hide + "\(id)").toNSNotificationName())
     }
 }
 
