@@ -50,8 +50,8 @@ extension Notification{
 }
 
 extension Sheet {
-    static func dismiss(id: Any){
-        Notification.send((NotificationKey.Sheet.Hide + "\(id)").toNSNotificationName())
+    static func dismiss(_ id: Any){
+        Notification.send((NotificationKey.Sheet.Hide + String(describing: type(of: id))).toNSNotificationName())
     }
 }
 

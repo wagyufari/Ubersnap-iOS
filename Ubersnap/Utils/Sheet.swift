@@ -73,6 +73,8 @@ private struct SheetSwiftUIViewGestured<Content: View>: View{
     @GestureState private var translation: CGFloat = 0
     let onDismiss: ()->Void
     
+    @State var observable: NSObjectProtocol?
+    
     var body: some View{
         ZStack{
             Rectangle()
@@ -98,9 +100,17 @@ private struct SheetSwiftUIViewGestured<Content: View>: View{
                     if velocity > 200 {
                         isShown.toggle()
                         onDismiss()
+                        NotificationCenter.default.removeObserver(observable)
                     }
                 }
             )
+            .onAppear{
+                observable = Notification.getSheetObserver(id: String(describing: type(of: content))){
+                    isShown.toggle()
+                    onDismiss()
+                    NotificationCenter.default.removeObserver(observable)
+                }
+            }
         }
     }
     

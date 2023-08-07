@@ -65,13 +65,17 @@ struct DatePicker: View {
                 .padding(.top, 24)
                 .onTapGesture {
                     onPickDate(viewModel.selectedDate)
-                    Sheet.dismiss(id: String(describing: type(of: self)))
+                    Sheet.dismiss(self)
                 }
         }
         .padding(16)
         .background(Color.backgroundSecondary)
         .onAppear{
-            viewModel.selectedIndex = viewModel.dates.firstIndex(where: { Calendar.current.isDate($0, equalTo: Date(), toGranularity: .month) }) ?? 0
+            if let selectedDate = viewModel.selectedDate {
+                viewModel.selectedIndex = viewModel.dates.firstIndex(where: { Calendar.current.isDate($0, equalTo: selectedDate, toGranularity: .month) }) ?? 0
+            } else {
+                viewModel.selectedIndex = viewModel.dates.firstIndex(where: { Calendar.current.isDate($0, equalTo: Date(), toGranularity: .month) }) ?? 0
+            }
         }
     }
     
@@ -101,9 +105,7 @@ class DatePickerViewModel: ObservableObject {
     
     init(selectedDate: Date?){
         self.selectedDate = selectedDate
-    }
-    
-    init() {
+        
         let yearsToGoBack = 10
         let yearsToGoForward = 10
         
@@ -120,6 +122,4 @@ class DatePickerViewModel: ObservableObject {
             dates.insert(newDate, at: 0)
         }
     }
-    
-    
 }

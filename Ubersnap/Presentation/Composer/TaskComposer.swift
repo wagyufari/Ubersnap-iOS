@@ -12,12 +12,12 @@ struct TaskComposer: View {
     
     let viewContext: UIViewController
     
-    @State private var title = ""
-    @State private var description = ""
-    @State private var dueDate: Date? = nil
+    @StateObject var viewModel: TaskComposerViewModel
     
     @FocusState private var isTitleFocused: Bool
     @FocusState private var isDescriptionFocused: Bool
+    
+    @State private var isDeleteConfirmation = false
     
     var body: some View {
         VStack {
@@ -26,12 +26,12 @@ struct TaskComposer: View {
                 .frame(width: 32, height: 4)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
             
-            TextField("Task name...", text: $title)
+            TextField("Task name...", text: $viewModel.title)
                 .focused($isTitleFocused)
                 .onSubmit {
                     isDescriptionFocused.toggle()
                 }
-            TextField("Description", text: $description, axis: .vertical)
+            TextField("Description", text: $viewModel.description, axis: .vertical)
                 .theme(.body)
                 .focused($isDescriptionFocused)
             
@@ -45,11 +45,11 @@ struct TaskComposer: View {
                 Image("calendar_today")
                     .resizable()
                     .renderingMode(.template)
-                    .foregroundColor(dueDate != nil ? Color.purple : Color.textSecondary)
+                    .foregroundColor(viewModel.dueDate != nil ? Color.purple : Color.textSecondary)
                     .frame(width: 16, height: 16)
                     .padding(8)
                     .overlay {
-                        if dueDate != nil {
+                        if viewModel.dueDate != nil {
                             Circle()
                                 .stroke(Color.purple, lineWidth: 1)
                         } else {
@@ -60,17 +60,40 @@ struct TaskComposer: View {
                     }
                     .onTapGesture {
                         isTitleFocused = false
+                        isDescriptionFocused = false
                         Sheet.show(parentController: viewContext) {
-                            DatePicker(viewModel: DatePickerViewModel(selectedDate: dueDate)) { date in
-                                self.dueDate = date
+                            DatePicker(viewModel: DatePickerViewModel(selectedDate: viewModel.dueDate)) { date in
+                                self.viewModel.dueDate = date
                             }
                         }
                     }
                 
+                if viewModel.editingTask != nil {
+                    Image("delete")
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(Color.red)
+                        .frame(width: 16, height: 16)
+                        .padding(8)
+                        .overlay {
+                            Circle()
+                                .stroke(Color.red, lineWidth: 1)
+                        }
+                        .onTapGesture {
+                            isDeleteConfirmation.toggle()
+                        }
+                }
+                
                 Spacer()
                 
-                Text("Create")
-                    .foregroundColor(Color(UIColor.secondaryLabel))
+                Text(viewModel.editingTask == nil ? "Create" : "Update")
+                    .foregroundColor(viewModel.title.isEmpty ? Color.textSecondary : Color.purple)
+                    .onTapGesture {
+                        if viewModel.title.isNotEmpty {
+                            viewModel.putTask()
+                            Sheet.dismiss(self)
+                        }
+                    }
             }
             .padding(.top, 16)
         }
@@ -79,15 +102,54 @@ struct TaskComposer: View {
         .onAppear{
             isTitleFocused = true
         }
+        .alert(isPresented: $isDeleteConfirmation) {
+                    Alert(
+                        title: Text("Delete Task"),
+                        message: Text("Are you sure you want to delete this task?"),
+                        primaryButton: .destructive(Text("Delete")) {
+                            viewModel.deleteTask()
+                            Sheet.dismiss(self)
+                        },
+                        secondaryButton: .cancel()
+                    )
+                }
     }
 }
 
-
-
-
-enum ComposerState: Int {
-    case Hidden
-    case Collapsed
-    case Expanded
+class TaskComposerViewModel: ObservableObject {
+    
+    @Published var title = ""
+    @Published var description = ""
+    @Published var dueDate: Date? = nil
+    
+    var editingTask: Task?
+    
+    let useCases: TaskUseCases
+    
+    init(useCases: TaskUseCases, editingTask: Task? = nil) {
+        self.useCases = useCases
+        self.editingTask = editingTask
+        if let editingTask {
+            title = editingTask.title ?? ""
+            description = editingTask.desc ?? ""
+            dueDate = editingTask.due_date
+        }
+    }
+    
+    func putTask() {
+        if let editingTask {
+            editingTask.title = title
+            editingTask.desc = description
+            editingTask.due_date = dueDate
+            useCases.update.invoke(editedTask: editingTask)
+        } else {
+            useCases.put.invoke(title: title, description: description, dueDate: dueDate)
+        }
+    }
+    
+    func deleteTask() {
+        if let editingTask {
+            useCases.delete.invoke(id: editingTask.id)
+        }
+    }
 }
-
