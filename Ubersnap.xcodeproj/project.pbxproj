@@ -9,23 +9,33 @@
 /* Begin PBXBuildFile section */
 		3F82D09D2A812712006AF43D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D09C2A812712006AF43D /* AppDelegate.swift */; };
 		3F82D09F2A812712006AF43D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D09E2A812712006AF43D /* SceneDelegate.swift */; };
-		3F82D0A12A812712006AF43D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0A02A812712006AF43D /* ViewController.swift */; };
-		3F82D0A42A812712006AF43D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F82D0A22A812712006AF43D /* Main.storyboard */; };
+		3F82D0A12A812712006AF43D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0A02A812712006AF43D /* MainViewController.swift */; };
 		3F82D0A72A812712006AF43D /* Ubersnap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0A52A812712006AF43D /* Ubersnap.xcdatamodeld */; };
 		3F82D0A92A812715006AF43D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F82D0A82A812715006AF43D /* Assets.xcassets */; };
 		3F82D0AC2A812715006AF43D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F82D0AA2A812715006AF43D /* LaunchScreen.storyboard */; };
+		3F82D0B92A812802006AF43D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0B82A812802006AF43D /* UIViewController+Extension.swift */; };
+		3F82D0BB2A812883006AF43D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F82D0BA2A812883006AF43D /* Main.storyboard */; };
+		3F82D0BE2A8128D4006AF43D /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0BC2A8128D4006AF43D /* BottomSheetView.swift */; };
+		3F82D0BF2A8128D4006AF43D /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0BD2A8128D4006AF43D /* Sheet.swift */; };
+		3F82D0C12A8128F9006AF43D /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0C02A8128F9006AF43D /* NSNotification+Extension.swift */; };
+		3F82D0C32A812A02006AF43D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0C22A812A02006AF43D /* Color+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3F82D0992A812712006AF43D /* Ubersnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ubersnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F82D09C2A812712006AF43D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F82D09E2A812712006AF43D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3F82D0A02A812712006AF43D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3F82D0A32A812712006AF43D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3F82D0A02A812712006AF43D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3F82D0A62A812712006AF43D /* Ubersnap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ubersnap.xcdatamodel; sourceTree = "<group>"; };
 		3F82D0A82A812715006AF43D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F82D0AB2A812715006AF43D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F82D0AD2A812715006AF43D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F82D0B82A812802006AF43D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		3F82D0BA2A812883006AF43D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		3F82D0BC2A8128D4006AF43D /* BottomSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		3F82D0BD2A8128D4006AF43D /* Sheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
+		3F82D0C02A8128F9006AF43D /* NSNotification+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extension.swift"; sourceTree = "<group>"; };
+		3F82D0C22A812A02006AF43D /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +68,53 @@
 		3F82D09B2A812712006AF43D /* Ubersnap */ = {
 			isa = PBXGroup;
 			children = (
+				3F82D0B72A8127EE006AF43D /* Utils */,
+				3F82D0B62A8127D8006AF43D /* Presentation */,
+				3F82D0B52A8127D5006AF43D /* Domain */,
+				3F82D0B32A8127C6006AF43D /* Data */,
 				3F82D09C2A812712006AF43D /* AppDelegate.swift */,
 				3F82D09E2A812712006AF43D /* SceneDelegate.swift */,
-				3F82D0A02A812712006AF43D /* ViewController.swift */,
-				3F82D0A22A812712006AF43D /* Main.storyboard */,
 				3F82D0A82A812715006AF43D /* Assets.xcassets */,
+				3F82D0BA2A812883006AF43D /* Main.storyboard */,
 				3F82D0AA2A812715006AF43D /* LaunchScreen.storyboard */,
 				3F82D0AD2A812715006AF43D /* Info.plist */,
 				3F82D0A52A812712006AF43D /* Ubersnap.xcdatamodeld */,
 			);
 			path = Ubersnap;
+			sourceTree = "<group>";
+		};
+		3F82D0B32A8127C6006AF43D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		3F82D0B52A8127D5006AF43D /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		3F82D0B62A8127D8006AF43D /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				3F82D0A02A812712006AF43D /* MainViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		3F82D0B72A8127EE006AF43D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3F82D0C22A812A02006AF43D /* Color+Extension.swift */,
+				3F82D0BC2A8128D4006AF43D /* BottomSheetView.swift */,
+				3F82D0C02A8128F9006AF43D /* NSNotification+Extension.swift */,
+				3F82D0BD2A8128D4006AF43D /* Sheet.swift */,
+				3F82D0B82A812802006AF43D /* UIViewController+Extension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +175,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F82D0BB2A812883006AF43D /* Main.storyboard in Resources */,
 				3F82D0AC2A812715006AF43D /* LaunchScreen.storyboard in Resources */,
 				3F82D0A92A812715006AF43D /* Assets.xcassets in Resources */,
-				3F82D0A42A812712006AF43D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,24 +188,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F82D0A12A812712006AF43D /* ViewController.swift in Sources */,
+				3F82D0A12A812712006AF43D /* MainViewController.swift in Sources */,
+				3F82D0C32A812A02006AF43D /* Color+Extension.swift in Sources */,
+				3F82D0C12A8128F9006AF43D /* NSNotification+Extension.swift in Sources */,
 				3F82D0A72A812712006AF43D /* Ubersnap.xcdatamodeld in Sources */,
 				3F82D09D2A812712006AF43D /* AppDelegate.swift in Sources */,
+				3F82D0B92A812802006AF43D /* UIViewController+Extension.swift in Sources */,
 				3F82D09F2A812712006AF43D /* SceneDelegate.swift in Sources */,
+				3F82D0BE2A8128D4006AF43D /* BottomSheetView.swift in Sources */,
+				3F82D0BF2A8128D4006AF43D /* Sheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3F82D0A22A812712006AF43D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3F82D0A32A812712006AF43D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3F82D0AA2A812715006AF43D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
