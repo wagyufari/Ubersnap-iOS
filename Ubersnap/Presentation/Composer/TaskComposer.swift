@@ -139,7 +139,7 @@ struct TaskComposer: View {
                     }
                 }
             case .none:
-                break;
+                isTitleFocused = true
             }
         }
         .alert(isPresented: $isDeleteConfirmation) {
