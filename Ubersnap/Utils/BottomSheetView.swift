@@ -42,7 +42,7 @@ struct BottomSheetView<Content: View>: View {
                 content
             }
             .frame(width: geometry.size.width, height: self.maxHeight, alignment: .top)
-            .background(backgroundColor ?? Color.backgroundSecondary)
+            .background(backgroundColor ?? Color.backgroundPrimary)
             .cornerRadius(Constants.radius)
             .frame(height: geometry.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
@@ -79,7 +79,7 @@ struct BottomSheetWrapModifier:ViewModifier{
     func body(content: Content) -> some View {
         GeometryReader { geometry in
             ZStack{
-                Rectangle().foregroundColor(Color.backgroundSecondary).opacity(isShown ? 0.4 : 0).onTapGesture {
+                Rectangle().foregroundColor(Color.backgroundPrimary).opacity(isShown ? 0.4 : 0).onTapGesture {
                     isShown.toggle()
                 }
                 BottomSheetView(
@@ -100,7 +100,7 @@ struct BottomSheetWrapModifier:ViewModifier{
                     }.background(ViewGeometry()).onPreferenceChange(ViewHeightKey.self){
                         frame = $0 > geometry.size.height * 0.9 ? geometry.size.height * 0.9 : $0
                     }
-                }.foregroundColor(Color.backgroundSecondary)
+                }.foregroundColor(Color.backgroundPrimary)
             }
         }.edgesIgnoringSafeArea(.all)
     }
@@ -123,7 +123,7 @@ struct BottomSheetModifier:ViewModifier{
                     onDismiss: onDismiss
                 ) {
                     content
-                }.foregroundColor(.backgroundSecondary)
+                }.foregroundColor(.backgroundPrimary)
             }
         }.edgesIgnoringSafeArea(.all)
     }

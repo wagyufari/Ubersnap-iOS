@@ -89,10 +89,22 @@ private struct ContentView: View{
                 .background(task.color == nil ? Color.textPrimary : Color(UIColor(hex: task.color!)))
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .padding(.vertical, 8)
+                .padding(.horizontal, 16)
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets())
                 .onTapGesture {
-                    
+                    if let description = task.desc, description.isNotEmpty {
+                        Sheet.show(parentController: viewContext, backgroundColor: Color.backgroundSecondary) {
+                            VStack(alignment: .leading){
+                                Text(description)
+                                    .theme(.body)
+                                    .foregroundColor(Color.textPrimary)
+                            }
+                            .padding(16)
+                        }
+                    } else {
+                        SnackBar.show(message: "Task does not have a description")
+                    }
                 }
             }
             .listStyle(PlainListStyle())

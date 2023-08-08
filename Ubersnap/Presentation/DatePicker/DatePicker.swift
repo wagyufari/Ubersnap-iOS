@@ -75,7 +75,7 @@ struct DatePicker: View {
                 }
         }
         .padding(16)
-        .background(Color.backgroundSecondary)
+        .background(Color.backgroundPrimary)
         .onAppear{
             if let selectedDate = viewModel.selectedDate {
                 viewModel.selectedIndex = viewModel.dates.firstIndex(where: { Calendar.current.isDate($0, equalTo: selectedDate, toGranularity: .month) }) ?? 0
@@ -95,8 +95,8 @@ struct DatePicker: View {
                 .theme(.body)
                 .padding(.vertical, 8)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(isSelected ? Color.textPrimary : Color.textSecondary)
-                .background(isSelected ? Color.backgroundPrimary : Color.backgroundTertiary)
+                .foregroundColor(isSelected ? Color.backgroundPrimary : Color.textTertiary)
+                .background(isSelected ? Color.textPrimary : Color.backgroundSecondary)
                 .clipShape(RoundedRectangle(cornerRadius: 32))
         }
     }

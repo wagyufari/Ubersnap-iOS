@@ -43,6 +43,8 @@
 		3F82D0FA2A81BA23006AF43D /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0F92A81BA23006AF43D /* ColorPicker.swift */; };
 		3F82D0FC2A81C727006AF43D /* Task+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0FB2A81C727006AF43D /* Task+State.swift */; };
 		3F82D0FE2A81C838006AF43D /* ToggleTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0FD2A81C838006AF43D /* ToggleTaskUseCase.swift */; };
+		3F82D1012A81D168006AF43D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 3F82D1002A81D168006AF43D /* PinLayout */; };
+		3F82D1032A81D176006AF43D /* SnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D1022A81D176006AF43D /* SnackBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,7 @@
 		3F82D0F92A81BA23006AF43D /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		3F82D0FB2A81C727006AF43D /* Task+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+State.swift"; sourceTree = "<group>"; };
 		3F82D0FD2A81C838006AF43D /* ToggleTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTaskUseCase.swift; sourceTree = "<group>"; };
+		3F82D1022A81D176006AF43D /* SnackBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnackBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F82D1012A81D168006AF43D /* PinLayout in Frameworks */,
 				3F82D0D72A812E3E006AF43D /* ReactiveSwift in Frameworks */,
 				3F82D0EB2A8139BC006AF43D /* Swinject in Frameworks */,
 			);
@@ -164,6 +168,7 @@
 		3F82D0B72A8127EE006AF43D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3F82D1022A81D176006AF43D /* SnackBar.swift */,
 				3F82D0DA2A812E8E006AF43D /* SafeArea+Utils.swift */,
 				3F82D0C92A812C7B006AF43D /* Collection+Extension.swift */,
 				3F82D0C72A812C7B006AF43D /* Date+Extension.swift */,
@@ -254,6 +259,7 @@
 			packageProductDependencies = (
 				3F82D0D62A812E3E006AF43D /* ReactiveSwift */,
 				3F82D0EA2A8139BC006AF43D /* Swinject */,
+				3F82D1002A81D168006AF43D /* PinLayout */,
 			);
 			productName = Ubersnap;
 			productReference = 3F82D0992A812712006AF43D /* Ubersnap.app */;
@@ -286,6 +292,7 @@
 			packageReferences = (
 				3F82D0D52A812E3E006AF43D /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
 				3F82D0E92A8139BC006AF43D /* XCRemoteSwiftPackageReference "Swinject" */,
+				3F82D0FF2A81D168006AF43D /* XCRemoteSwiftPackageReference "PinLayout" */,
 			);
 			productRefGroup = 3F82D09A2A812712006AF43D /* Products */;
 			projectDirPath = "";
@@ -328,6 +335,7 @@
 				3F82D0A72A812712006AF43D /* Ubersnap.xcdatamodeld in Sources */,
 				3F82D09D2A812712006AF43D /* AppDelegate.swift in Sources */,
 				3F82D0E82A8138DE006AF43D /* Persistence.swift in Sources */,
+				3F82D1032A81D176006AF43D /* SnackBar.swift in Sources */,
 				3F82D0FE2A81C838006AF43D /* ToggleTaskUseCase.swift in Sources */,
 				3F82D0EF2A81401A006AF43D /* Array+Extension.swift in Sources */,
 				3F82D0B92A812802006AF43D /* UIViewController+Extension.swift in Sources */,
@@ -572,6 +580,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		3F82D0FF2A81D168006AF43D /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -584,6 +600,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F82D0E92A8139BC006AF43D /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		3F82D1002A81D168006AF43D /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F82D0FF2A81D168006AF43D /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
 

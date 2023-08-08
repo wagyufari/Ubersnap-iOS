@@ -119,7 +119,7 @@ struct TaskComposer: View {
             .padding(.top, 16)
         }
         .padding()
-        .background(Color.backgroundSecondary)
+        .background(Color.backgroundPrimary)
         .onAppear{
             isTitleFocused = true
         }
@@ -166,14 +166,17 @@ class TaskComposerViewModel: ObservableObject {
             editingTask.due_date = dueDate
             editingTask.color = colorHex
             useCases.update.invoke(editedTask: editingTask)
+            SnackBar.show(message: "Task successfully updated")
         } else {
             useCases.put.invoke(title: title, description: description, dueDate: dueDate, colorHex: colorHex)
+            SnackBar.show(message: "Task created successfully")
         }
     }
     
     func deleteTask() {
         if let editingTask {
             useCases.delete.invoke(id: editingTask.id)
+            SnackBar.show(message: "Task deleted")
         }
     }
 }
