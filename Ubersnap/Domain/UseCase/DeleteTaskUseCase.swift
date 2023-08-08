@@ -15,16 +15,21 @@ class DeleteTaskUseCase {
         self.managedObjectContext = managedObjectContext
     }
     
-    func invoke(id: UUID?) {
+    func invoke(id: UUID?, onSuccess: (()->Void)? = nil, onFailed: ((String)->Void)? = nil) {
         do {
             let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-            let items = try managedObjectContext.fetch(fetchRequest)
-            items.filter { todo in
+            let items = try managedObjectContext.fetch(fetchRequest).filter { todo in
                 todo.id == id
-            }.forEach(managedObjectContext.delete)
-            try managedObjectContext.save()
+            }
+            if items.isEmpty {
+                onFailed?("Task not found")
+            } else {
+                items.forEach(managedObjectContext.delete)
+                try managedObjectContext.save()
+                onSuccess?()
+            }
         } catch {
-            
+            onFailed?(error.localizedDescription)
         }
     }
     
