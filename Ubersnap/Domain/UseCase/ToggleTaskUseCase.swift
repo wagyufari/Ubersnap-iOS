@@ -15,7 +15,7 @@ class ToggleTaskUseCase {
         self.managedObjectContext = managedObjectContext
     }
     
-    func invoke(task: Task) {
+    func invoke(task: Task){
         do {
             let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
             let tasks = try managedObjectContext.fetch(fetchRequest)
@@ -32,4 +32,7 @@ class ToggleTaskUseCase {
             // Handle error
         }
     }
+    
+    
+    
 }

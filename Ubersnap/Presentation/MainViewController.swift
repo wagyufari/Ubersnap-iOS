@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 
 class MainViewController: UIViewController, UIGestureRecognizerDelegate{
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.interactivePopGestureRecognizer?.delegate = self
@@ -71,19 +71,6 @@ private struct ContentView: View{
                     .padding(.leading, -16)
                     
                     Spacer()
-                    Image("edit_filled")
-                        .renderingMode(.template)
-                        .resizable()
-                        .foregroundColor(Color.textPrimary)
-                        .frame(width: 16, height: 16)
-                        .padding(4)
-                        .background(Color.backgroundPrimary)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .onTapGesture {
-                            Sheet.showGestured(parentController: viewContext) {
-                                TaskComposer(viewContext: viewContext, viewModel: TaskComposerViewModel(useCases: sl(), editingTask: task))
-                            }
-                        }
                 }
                 .padding(.trailing, 16)
                 .background(task.color == nil ? Color.textPrimary : Color(UIColor(hex: task.color!)))
@@ -93,18 +80,11 @@ private struct ContentView: View{
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets())
                 .onTapGesture {
-                    if let description = task.desc, description.isNotEmpty {
-                        Sheet.show(parentController: viewContext, backgroundColor: Color.backgroundSecondary) {
-                            VStack(alignment: .leading){
-                                Text(description)
-                                    .theme(.body)
-                                    .foregroundColor(Color.textPrimary)
-                            }
-                            .padding(16)
-                        }
-                    } else {
-                        SnackBar.show(message: "Task does not have a description")
+                    let controller = TaskDetailController(task: task)
+                    if let sheet = controller.presentationController as? UISheetPresentationController {
+                        sheet.detents = [.medium()]
                     }
+                    viewContext.present(controller, animated: true)
                 }
             }
             .listStyle(PlainListStyle())

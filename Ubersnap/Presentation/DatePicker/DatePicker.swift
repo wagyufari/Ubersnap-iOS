@@ -25,10 +25,10 @@ struct DatePicker: View {
             if let selectedDate = viewModel.selectedDate {
                 Text(selectedDate.getMMMMdd())
                     .theme(.body)
-                    .foregroundColor(Color.textPrimary)
+                    .foregroundColor(Color.textSecondary)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 8)
-                    .background(Color.backgroundTertiary)
+                    .background(Color.backgroundSecondary)
                     .clipShape(RoundedRectangle(cornerRadius: 4))
             }
             HStack{
@@ -51,8 +51,9 @@ struct DatePicker: View {
                         DateGrid(selectedDate: $viewModel.selectedDate, dateOfMonth: dateOfMonth)
                             .background(GeometryReader(content: { geometry in
                                 Color.clear.onAppear{
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                                         frameHeight = geometry.size.height
+                                        print(frameHeight)
                                     }
                                 }
                             }))

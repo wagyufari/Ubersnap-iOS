@@ -15,11 +15,13 @@ class TaskUseCases {
     var get: GetTaskUseCase
     var update: UpdateTaskUseCase
     var toggle: ToggleTaskUseCase
+    var getById: GetTaskByIdUseCase
     
     init(managedObjectContext: NSManagedObjectContext) {
         put = PutTaskUseCase(managedObjectContext: managedObjectContext)
         delete = DeleteTaskUseCase(managedObjectContext: managedObjectContext)
         get = GetTaskUseCase(managedObjectContext: managedObjectContext)
+        getById = GetTaskByIdUseCase(managedObjectContext: managedObjectContext)
         update = UpdateTaskUseCase(managedObjectContext: managedObjectContext)
         toggle = ToggleTaskUseCase(managedObjectContext: managedObjectContext)
     }

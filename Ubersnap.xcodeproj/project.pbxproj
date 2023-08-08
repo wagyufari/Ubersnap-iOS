@@ -45,6 +45,7 @@
 		3F82D0FE2A81C838006AF43D /* ToggleTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0FD2A81C838006AF43D /* ToggleTaskUseCase.swift */; };
 		3F82D1012A81D168006AF43D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 3F82D1002A81D168006AF43D /* PinLayout */; };
 		3F82D1032A81D176006AF43D /* SnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D1022A81D176006AF43D /* SnackBar.swift */; };
+		3F82D1052A8221DC006AF43D /* GetTaskByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D1042A8221DC006AF43D /* GetTaskByIdUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		3F82D0FB2A81C727006AF43D /* Task+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+State.swift"; sourceTree = "<group>"; };
 		3F82D0FD2A81C838006AF43D /* ToggleTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTaskUseCase.swift; sourceTree = "<group>"; };
 		3F82D1022A81D176006AF43D /* SnackBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnackBar.swift; sourceTree = "<group>"; };
+		3F82D1042A8221DC006AF43D /* GetTaskByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTaskByIdUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				3F82D0DD2A81380A006AF43D /* TaskUseCases.swift */,
 				3F82D0D32A812CF4006AF43D /* GetCalendarByMonthAndYearUseCase.swift */,
 				3F82D0FD2A81C838006AF43D /* ToggleTaskUseCase.swift */,
+				3F82D1042A8221DC006AF43D /* GetTaskByIdUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				3F82D0D42A812CF4006AF43D /* GetCalendarByMonthAndYearUseCase.swift in Sources */,
 				3F82D09F2A812712006AF43D /* SceneDelegate.swift in Sources */,
 				3F82D0BE2A8128D4006AF43D /* BottomSheetView.swift in Sources */,
+				3F82D1052A8221DC006AF43D /* GetTaskByIdUseCase.swift in Sources */,
 				3F82D0C62A812C5F006AF43D /* TaskComposer.swift in Sources */,
 				3F82D0D92A812E53006AF43D /* Keyboard+Utils.swift in Sources */,
 				3F82D0BF2A8128D4006AF43D /* Sheet.swift in Sources */,

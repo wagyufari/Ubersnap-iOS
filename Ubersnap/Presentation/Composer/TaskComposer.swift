@@ -121,20 +121,46 @@ struct TaskComposer: View {
         .padding()
         .background(Color.backgroundPrimary)
         .onAppear{
-            isTitleFocused = true
+            switch viewModel.initialMode {
+            case .Title:
+                isTitleFocused = true
+            case .Description:
+                isDescriptionFocused = true
+            case .DueDate:
+                Sheet.show(parentController: viewContext, backgroundColor: Color.backgroundTertiary) {
+                    DatePicker(viewModel: DatePickerViewModel(selectedDate: viewModel.dueDate)) { date in
+                        self.viewModel.dueDate = date
+                    }
+                }
+            case .Color:
+                Sheet.show(parentController: viewContext, backgroundColor: Color.backgroundTertiary) {
+                    ColorPicker { colorHex in
+                        viewModel.colorHex = colorHex
+                    }
+                }
+            case .none:
+                break;
+            }
         }
         .alert(isPresented: $isDeleteConfirmation) {
-                    Alert(
-                        title: Text("Delete Task"),
-                        message: Text("Are you sure you want to delete this task?"),
-                        primaryButton: .destructive(Text("Delete")) {
-                            viewModel.deleteTask()
-                            Sheet.dismiss(self)
-                        },
-                        secondaryButton: .cancel()
-                    )
-                }
+            Alert(
+                title: Text("Delete Task"),
+                message: Text("Are you sure you want to delete this task?"),
+                primaryButton: .destructive(Text("Delete")) {
+                    viewModel.deleteTask()
+                    Sheet.dismiss(self)
+                },
+                secondaryButton: .cancel()
+            )
+        }
     }
+}
+
+enum TaskComposerMode {
+    case Title
+    case Description
+    case Color
+    case DueDate
 }
 
 class TaskComposerViewModel: ObservableObject {
@@ -147,10 +173,12 @@ class TaskComposerViewModel: ObservableObject {
     var editingTask: Task?
     
     let useCases: TaskUseCases
+    let initialMode: TaskComposerMode?
     
-    init(useCases: TaskUseCases, editingTask: Task? = nil) {
+    init(useCases: TaskUseCases, initialMode: TaskComposerMode? = nil, editingTask: Task? = nil) {
         self.useCases = useCases
         self.editingTask = editingTask
+        self.initialMode = initialMode
         if let editingTask {
             title = editingTask.title ?? ""
             description = editingTask.desc ?? ""
