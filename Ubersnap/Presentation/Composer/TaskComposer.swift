@@ -202,7 +202,7 @@ class TaskComposerViewModel: ObservableObject {
     }
     
     func deleteTask() {
-        useCases.delete.invoke(id: editingTask.id) {
+        useCases.delete.invoke(id: editingTask?.id) {
             SnackBar.show(message: "Task deleted")
         } onFailed: { error in
             SnackBar.show(message: error)

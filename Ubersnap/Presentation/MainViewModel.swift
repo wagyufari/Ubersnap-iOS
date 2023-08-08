@@ -38,12 +38,6 @@ class MainViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDeleg
             useCase.toggle.invoke(task: task)
         }
     }
-
-    func deleteTask(id: UUID?) {
-        withAnimation {
-            useCase.delete.invoke(id: id)
-        }
-    }
 }
 
 extension MainViewModel {
