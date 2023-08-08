@@ -39,15 +39,15 @@ struct DateGrid: View{
                                 }
                                 Text("\(date.dayOfMonth().description)")
                                     .theme(.body2)
-                                    .foregroundColor(isSameMonth ? Color.textPrimary : Color.textSecondary)
+                                    .foregroundColor(selectedDate == date ? Color.backgroundSecondary : isSameMonth ? Color.textPrimary : Color.textSecondary)
                                     .frame(maxWidth: .infinity)
                                     .padding(6)
-                                    .background(selectedDate == date ? Color.purple : nil)
+                                    .background(selectedDate == date ? Color.textPrimary : nil)
                                     .clipShape(Circle())
                                     .overlay {
                                         if date.isDateToday {
                                             Circle()
-                                                .stroke(Color.purple, lineWidth: 1)
+                                                .stroke(Color.textPrimary, lineWidth: 1)
                                         }
                                     }
                                     .onTapGesture {

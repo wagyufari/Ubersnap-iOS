@@ -65,8 +65,8 @@ struct DatePicker: View {
             Text("Done")
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
-                .background(Color.purple)
-                .foregroundColor(.textPrimary)
+                .background(Color.textPrimary)
+                .foregroundColor(Color.backgroundPrimary)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .padding(.top, 24)
                 .onTapGesture {
@@ -95,8 +95,8 @@ struct DatePicker: View {
                 .theme(.body)
                 .padding(.vertical, 8)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(isSelected ? Color.purple : Color.textSecondary)
-                .background(isSelected ? Color.purple.opacity(0.4) : Color.backgroundTertiary)
+                .foregroundColor(isSelected ? Color.textPrimary : Color.textSecondary)
+                .background(isSelected ? Color.backgroundPrimary : Color.backgroundTertiary)
                 .clipShape(RoundedRectangle(cornerRadius: 32))
         }
     }

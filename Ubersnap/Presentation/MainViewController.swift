@@ -55,6 +55,7 @@ private struct ContentView: View{
                         }
                     }
                 }
+                .padding(16)
             }
             .frame(maxWidth: .infinity)
             HStack{
@@ -63,9 +64,9 @@ private struct ContentView: View{
                     .resizable()
                     .renderingMode(.template)
                     .frame(width: 24, height: 24)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color.backgroundPrimary)
                     .padding(16)
-                    .background(Color.purple)
+                    .background(Color.textPrimary)
                     .clipShape(Circle())
                     .onTapGesture {
                         Sheet.showGestured(parentController: viewContext) {

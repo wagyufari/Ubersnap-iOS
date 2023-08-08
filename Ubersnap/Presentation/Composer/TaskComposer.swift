@@ -38,20 +38,20 @@ struct TaskComposer: View {
             HStack{
                 Text("wa")
                     .theme(.caption)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color.backgroundPrimary)
                     .padding(8)
-                    .background(Color.purple)
+                    .background(Color.textPrimary)
                     .clipShape(Circle())
                 Image("calendar_today")
                     .resizable()
                     .renderingMode(.template)
-                    .foregroundColor(viewModel.dueDate != nil ? Color.purple : Color.textSecondary)
+                    .foregroundColor(viewModel.dueDate != nil ? Color.textPrimary : Color.textSecondary)
                     .frame(width: 16, height: 16)
                     .padding(8)
                     .overlay {
                         if viewModel.dueDate != nil {
                             Circle()
-                                .stroke(Color.purple, lineWidth: 1)
+                                .stroke(Color.textPrimary, lineWidth: 1)
                         } else {
                             Circle()
                                 .stroke(style: StrokeStyle(lineWidth: 1, dash: [3]))
@@ -108,7 +108,7 @@ struct TaskComposer: View {
                 Spacer()
                 
                 Text(viewModel.editingTask == nil ? "Create" : "Update")
-                    .foregroundColor(viewModel.title.isEmpty ? Color.textSecondary : Color.purple)
+                    .foregroundColor(viewModel.title.isEmpty ? Color.textSecondary : Color.textPrimary)
                     .onTapGesture {
                         if viewModel.title.isNotEmpty {
                             viewModel.putTask()
