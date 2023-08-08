@@ -17,8 +17,15 @@ class GetTaskUseCase {
     
     func invoke() -> NSFetchedResultsController<Task> {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(keyPath: \Task.timestamp, ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // First, sort by the state in ascending order.
+        let stateSortDescriptor = NSSortDescriptor(keyPath: \Task.state, ascending: false)
+        
+        // Then, sort by the timestamp in ascending order.
+        let timestampSortDescriptor = NSSortDescriptor(keyPath: \Task.timestamp, ascending: true)
+        
+        // Combine the sort descriptors into an array.
+        fetchRequest.sortDescriptors = [stateSortDescriptor, timestampSortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
@@ -30,7 +37,7 @@ class GetTaskUseCase {
         do {
             try fetchedResultsController.performFetch()
         } catch {
-            
+            // Handle the error here.
         }
         
         return fetchedResultsController

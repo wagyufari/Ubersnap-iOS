@@ -32,6 +32,12 @@ class MainViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDeleg
             items = []
         }
     }
+    
+    func toggleTask(task: Task) {
+        withAnimation {
+            useCase.toggle.invoke(task: task)
+        }
+    }
 
     func deleteTask(id: UUID?) {
         withAnimation {

@@ -82,10 +82,14 @@ extension Date {
     }
     
     func getMMMMdd() -> String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMMM dd"
-            return dateFormatter.string(from: self)
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM dd"
+        return dateFormatter.string(from: self)
+    }
+    
+    func isOverdue() -> Bool {
+           return self < Date()
+       }
 }
 
 extension Date {

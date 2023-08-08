@@ -32,32 +32,71 @@ private struct ContentView: View{
     
     var body: some View {
         ZStack(alignment: .bottomTrailing){
-            ScrollView{
-                VStack{
-                    ForEach(0..<viewModel.items.count, id: \.self){ index in
-                        if let task = viewModel.items[safe: index]{
-                            VStack(spacing: 16){
-                                HStack{
-                                    Text(task.title ?? "")
-                                        .theme(.title2)
-                                        .foregroundColor(.black)
-                                    Spacer()
-                                }
-                            }
-                            .padding(16)
-                            .background(task.color == nil ? Color.textTertiary.opacity(0.5) : Color(UIColor(hex: task.color!)))
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                            .onTapGesture {
-                                Sheet.showGestured(parentController: viewContext) {
-                                    TaskComposer(viewContext: viewContext, viewModel: TaskComposerViewModel(useCases: sl(), editingTask: task))
-                                }
-                            }
+            List(viewModel.items, id: \.self) { task in
+                HStack(spacing: 16){
+                    ZStack{
+                        if TaskState(rawValue: task.state ?? "") == .Completed {
+                            Image("done")
+                                .renderingMode(.template)
+                                .resizable()
+                                .foregroundColor(Color.textPrimary)
+                                .frame(width: 16, height: 16)
+                                .padding(4)
+                                .background(Color.backgroundPrimary)
+                                .clipShape(Circle())
+                        } else {
+                            Circle()
+                                .stroke(Color.backgroundPrimary, lineWidth: 2)
+                                .frame(width: 24, height: 24)
                         }
                     }
+                    .padding(24)
+                    .background(task.color == nil ? Color.textPrimary : Color(UIColor(hex: task.color!)))
+                    .onTapGesture {
+                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                        viewModel.toggleTask(task: task)
+                    }
+                    
+                    VStack(alignment: .leading){
+                        Text(task.title ?? "")
+                            .theme(.title2)
+                            .strikethrough(task.taskState == .Completed)
+                            .foregroundColor(Color.backgroundPrimary)
+                        if let dueDate = task.due_date {
+                            Text("Due in \(dueDate.getMMMMdd())")
+                                .theme(.title4)
+                                .foregroundColor(dueDate.isOverdue() ? Color.red : Color.backgroundSecondary)
+                        }
+                    }
+                    .padding(.leading, -16)
+                    
+                    Spacer()
+                    Image("edit_filled")
+                        .renderingMode(.template)
+                        .resizable()
+                        .foregroundColor(Color.textPrimary)
+                        .frame(width: 16, height: 16)
+                        .padding(4)
+                        .background(Color.backgroundPrimary)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .onTapGesture {
+                            Sheet.showGestured(parentController: viewContext) {
+                                TaskComposer(viewContext: viewContext, viewModel: TaskComposerViewModel(useCases: sl(), editingTask: task))
+                            }
+                        }
                 }
-                .padding(16)
+                .padding(.trailing, 16)
+                .background(task.color == nil ? Color.textPrimary : Color(UIColor(hex: task.color!)))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .padding(.vertical, 8)
+                .listRowSeparator(.hidden)
+                .listRowInsets(EdgeInsets())
+                .onTapGesture {
+                    
+                }
             }
-            .frame(maxWidth: .infinity)
+            .listStyle(PlainListStyle())
+            
             HStack{
                 Spacer()
                 Image("add")
