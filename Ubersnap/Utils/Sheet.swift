@@ -11,10 +11,10 @@ import SwiftUI
 
 struct Sheet{
     
-    static func show<Content: View>(parentController: UIViewController, @ViewBuilder rootView: () -> Content, onDismiss: (()->Void)? = nil){
+    static func show<Content: View>(parentController: UIViewController, backgroundColor: Color? = nil, @ViewBuilder rootView: () -> Content, onDismiss: (()->Void)? = nil){
         let controller = UIViewController()
         controller.useSwiftUI(isClear: true){
-            SheetSwiftUIView(content: rootView) {
+            SheetSwiftUIView(content: rootView, backgroundColor: backgroundColor) {
                 controller.view.removeFromSuperview()
                 onDismiss?()
             }
@@ -44,6 +44,7 @@ struct Sheet{
 
 private struct SheetSwiftUIView<Content: View>: View{
     @ViewBuilder let content: Content
+    var backgroundColor: Color? = nil
     @State var isShown = false
     let onDismiss: ()->Void
     
@@ -51,7 +52,7 @@ private struct SheetSwiftUIView<Content: View>: View{
     
     var body: some View{
         content
-            .modifier(BottomSheetWrapModifier(isShown: $isShown, onDismiss: {
+            .modifier(BottomSheetWrapModifier(isShown: $isShown, backgroundColor: backgroundColor, onDismiss: {
                 NotificationCenter.default.removeObserver(observable)
                 onDismiss()
             }))
@@ -84,6 +85,22 @@ private struct SheetSwiftUIViewGestured<Content: View>: View{
                     isShown.toggle()
                     onDismiss()
                 }
+                .gesture(
+                    DragGesture().updating(self.$translation) { value, state, _ in
+                        state = value.translation.height
+                    }.onEnded { value in
+                        let velocity = CGSize(
+                            width:  value.predictedEndLocation.x - value.location.x,
+                            height: value.predictedEndLocation.y - value.location.y
+                        ).height
+                        
+                        if velocity > 200 {
+                            isShown.toggle()
+                            onDismiss()
+                            NotificationCenter.default.removeObserver(observable)
+                        }
+                    }
+                )
             VStack{
                 Spacer()
                 content

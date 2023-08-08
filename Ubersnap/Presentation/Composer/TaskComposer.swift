@@ -22,7 +22,7 @@ struct TaskComposer: View {
     var body: some View {
         VStack {
             Rectangle()
-                .foregroundColor(Color.backgroundTertiary)
+                .foregroundColor(Color.textPrimary.opacity(0.4))
                 .frame(width: 32, height: 4)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
             
@@ -61,12 +61,33 @@ struct TaskComposer: View {
                     .onTapGesture {
                         isTitleFocused = false
                         isDescriptionFocused = false
-                        Sheet.show(parentController: viewContext) {
+                        Sheet.show(parentController: viewContext, backgroundColor: Color.backgroundTertiary) {
                             DatePicker(viewModel: DatePickerViewModel(selectedDate: viewModel.dueDate)) { date in
                                 self.viewModel.dueDate = date
                             }
                         }
                     }
+                
+                ZStack{
+                    if let color = viewModel.colorHex {
+                        Circle()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color(UIColor(hex: color)))
+                    } else {
+                        Image("colors_circle")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                    }
+                }
+                .onTapGesture {
+                    isTitleFocused = false
+                    isDescriptionFocused = false
+                    Sheet.show(parentController: viewContext, backgroundColor: Color.backgroundTertiary) {
+                        ColorPicker { colorHex in
+                            viewModel.colorHex = colorHex
+                        }
+                    }
+                }
                 
                 if viewModel.editingTask != nil {
                     Image("delete")
@@ -121,6 +142,7 @@ class TaskComposerViewModel: ObservableObject {
     @Published var title = ""
     @Published var description = ""
     @Published var dueDate: Date? = nil
+    @Published var colorHex: String? = nil
     
     var editingTask: Task?
     
@@ -133,6 +155,7 @@ class TaskComposerViewModel: ObservableObject {
             title = editingTask.title ?? ""
             description = editingTask.desc ?? ""
             dueDate = editingTask.due_date
+            colorHex = editingTask.color
         }
     }
     
@@ -141,9 +164,10 @@ class TaskComposerViewModel: ObservableObject {
             editingTask.title = title
             editingTask.desc = description
             editingTask.due_date = dueDate
+            editingTask.color = colorHex
             useCases.update.invoke(editedTask: editingTask)
         } else {
-            useCases.put.invoke(title: title, description: description, dueDate: dueDate)
+            useCases.put.invoke(title: title, description: description, dueDate: dueDate, colorHex: colorHex)
         }
     }
     

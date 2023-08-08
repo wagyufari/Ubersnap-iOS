@@ -18,6 +18,7 @@ struct BottomSheetView<Content: View>: View {
     
     let maxHeight: CGFloat
     let minHeight: CGFloat
+    var backgroundColor: Color? = nil
     let content: Content
     
     @GestureState private var translation: CGFloat = 0
@@ -26,11 +27,12 @@ struct BottomSheetView<Content: View>: View {
         isOpen ? 0 : maxHeight - minHeight
     }
     
-    init(isOpen: Binding<Bool>, maxHeight: CGFloat, onDismiss: @escaping ()->Void, @ViewBuilder content: () -> Content) {
+    init(isOpen: Binding<Bool>, maxHeight: CGFloat, backgroundColor: Color? = nil, onDismiss: @escaping ()->Void, @ViewBuilder content: () -> Content) {
         self.minHeight = maxHeight * Constants.minHeightRatio
         self.maxHeight = maxHeight
         self.content = content()
         self.onDismiss = onDismiss
+        self.backgroundColor = backgroundColor
         self._isOpen = isOpen
     }
     
@@ -40,7 +42,7 @@ struct BottomSheetView<Content: View>: View {
                 content
             }
             .frame(width: geometry.size.width, height: self.maxHeight, alignment: .top)
-            .background(Color.backgroundPrimary)
+            .background(backgroundColor ?? Color.backgroundSecondary)
             .cornerRadius(Constants.radius)
             .frame(height: geometry.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
@@ -71,17 +73,19 @@ struct BottomSheetWrapModifier:ViewModifier{
     @Binding var isShown: Bool
     @State private var frame: CGFloat = 0
     @State var bottomSafeArea: CGFloat? = nil
+    var backgroundColor: Color? = nil
     var onDismiss: ()->Void
     
     func body(content: Content) -> some View {
         GeometryReader { geometry in
             ZStack{
-                Rectangle().foregroundColor(Color.backgroundPrimary).opacity(isShown ? 0.4 : 0).onTapGesture {
+                Rectangle().foregroundColor(Color.backgroundSecondary).opacity(isShown ? 0.4 : 0).onTapGesture {
                     isShown.toggle()
                 }
                 BottomSheetView(
                     isOpen: $isShown,
                     maxHeight: frame == 0 ? geometry.size.height * 0.9 : frame,
+                    backgroundColor: backgroundColor,
                     onDismiss: onDismiss
                 ) {
                     VStack{
@@ -96,7 +100,7 @@ struct BottomSheetWrapModifier:ViewModifier{
                     }.background(ViewGeometry()).onPreferenceChange(ViewHeightKey.self){
                         frame = $0 > geometry.size.height * 0.9 ? geometry.size.height * 0.9 : $0
                     }
-                }.foregroundColor(Color.backgroundPrimary)
+                }.foregroundColor(Color.backgroundSecondary)
             }
         }.edgesIgnoringSafeArea(.all)
     }
@@ -119,7 +123,7 @@ struct BottomSheetModifier:ViewModifier{
                     onDismiss: onDismiss
                 ) {
                     content
-                }.foregroundColor(.backgroundPrimary)
+                }.foregroundColor(.backgroundSecondary)
             }
         }.edgesIgnoringSafeArea(.all)
     }

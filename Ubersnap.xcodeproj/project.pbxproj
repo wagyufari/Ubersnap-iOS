@@ -39,6 +39,8 @@
 		3F82D0ED2A8139D1006AF43D /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0EC2A8139D1006AF43D /* DependencyInjector.swift */; };
 		3F82D0EF2A81401A006AF43D /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0EE2A81401A006AF43D /* Array+Extension.swift */; };
 		3F82D0F12A8141AB006AF43D /* UpdateTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0F02A8141AB006AF43D /* UpdateTaskUseCase.swift */; };
+		3F82D0F72A81B85F006AF43D /* TaskDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0F62A81B85F006AF43D /* TaskDetailController.swift */; };
+		3F82D0FA2A81BA23006AF43D /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82D0F92A81BA23006AF43D /* ColorPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		3F82D0EC2A8139D1006AF43D /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		3F82D0EE2A81401A006AF43D /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		3F82D0F02A8141AB006AF43D /* UpdateTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTaskUseCase.swift; sourceTree = "<group>"; };
+		3F82D0F62A81B85F006AF43D /* TaskDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailController.swift; sourceTree = "<group>"; };
+		3F82D0F92A81BA23006AF43D /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,8 @@
 		3F82D0B62A8127D8006AF43D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				3F82D0F82A81BA1D006AF43D /* ColorPicker */,
+				3F82D0F52A81B84A006AF43D /* Detail */,
 				3F82D0CD2A812C8D006AF43D /* DatePicker */,
 				3F82D0C42A812C5F006AF43D /* Composer */,
 				3F82D0A02A812712006AF43D /* MainViewController.swift */,
@@ -205,6 +211,22 @@
 				3F82D0E72A8138DE006AF43D /* Persistence.swift */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		3F82D0F52A81B84A006AF43D /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				3F82D0F62A81B85F006AF43D /* TaskDetailController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		3F82D0F82A81BA1D006AF43D /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				3F82D0F92A81BA23006AF43D /* ColorPicker.swift */,
+			);
+			path = ColorPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F82D0A12A812712006AF43D /* MainViewController.swift in Sources */,
+				3F82D0FA2A81BA23006AF43D /* ColorPicker.swift in Sources */,
 				3F82D0CA2A812C7B006AF43D /* Date+Extension.swift in Sources */,
 				3F82D0C32A812A02006AF43D /* Color+Extension.swift in Sources */,
 				3F82D0F12A8141AB006AF43D /* UpdateTaskUseCase.swift in Sources */,
@@ -313,6 +336,7 @@
 				3F82D0D12A812C8D006AF43D /* DatePicker.swift in Sources */,
 				3F82D0E52A813857006AF43D /* MainViewModel.swift in Sources */,
 				3F82D0DB2A812E8E006AF43D /* SafeArea+Utils.swift in Sources */,
+				3F82D0F72A81B85F006AF43D /* TaskDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

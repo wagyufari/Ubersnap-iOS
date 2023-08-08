@@ -16,6 +16,12 @@ struct DatePicker: View {
     
     var body: some View {
         VStack(spacing: 16){
+            
+            Rectangle()
+                .foregroundColor(Color.textPrimary.opacity(0.4))
+                .frame(width: 32, height: 4)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+            
             if let selectedDate = viewModel.selectedDate {
                 Text(selectedDate.getMMMMdd())
                     .theme(.body)

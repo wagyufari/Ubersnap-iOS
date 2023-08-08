@@ -15,13 +15,14 @@ class PutTaskUseCase {
         self.managedObjectContext = managedObjectContext
     }
     
-    func invoke(title: String, description: String, dueDate: Date?) {
+    func invoke(title: String, description: String, dueDate: Date?, colorHex: String?) {
         let newItem = Task(context: managedObjectContext)
         newItem.timestamp = Date()
         newItem.id = UUID()
         newItem.title = title
         newItem.desc = description
         newItem.due_date = dueDate
+        newItem.color = colorHex
         
         do {
             try managedObjectContext.save()
